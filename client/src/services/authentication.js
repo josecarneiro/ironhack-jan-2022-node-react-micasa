@@ -1,9 +1,4 @@
-import axios from 'axios';
-
-const api = axios.create({
-  baseURL: process.env.REACT_APP_REST_API_URL,
-  withCredentials: true
-});
+import api from './api';
 
 export const registerUser = (body) =>
   api.post('/authentication/sign-up', body).then((response) => response.data);
