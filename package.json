@@ -1,0 +1,7 @@
+{
+  "name": "micasa-root",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "cd server && npm run start"
+  }
+}
