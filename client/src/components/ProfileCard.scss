@@ -1,0 +1,20 @@
+$profile-image-size: 4rem;
+
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1em 0;
+  border: 1px solid #dadada;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  img {
+    width: $profile-image-size;
+    height: $profile-image-size;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  span {
+    font-size: 1.125rem;
+  }
+}

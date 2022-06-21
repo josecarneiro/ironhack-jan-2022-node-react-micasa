@@ -1,18 +1,21 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AuthenticationForm from '../components/AuthenticationForm';
 import AuthenticationContext from '../context/authentication';
 import { logInUser } from '../services/authentication';
 
 const LogInPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const navigate = useNavigate();
+
+  const [user, setUserState] = useState({
+    email: '',
+    password: ''
+  });
 
   const { setUser } = useContext(AuthenticationContext);
 
-  const handleLogIn = (event) => {
-    event.preventDefault();
-    logInUser({ email, password }).then((data) => {
+  const handleLogIn = () => {
+    logInUser(user).then((data) => {
       setUser(data.user);
       navigate('/');
     });
@@ -20,27 +23,14 @@ const LogInPage = () => {
 
   return (
     <div>
-      <form onSubmit={handleLogIn}>
-        <label htmlFor="input-email">Email</label>
-        <input
-          id="input-email"
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        />
-
-        <label htmlFor="input-password">Password</label>
-        <input
-          id="input-password"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        />
-
-        <button>Log In to Existing Account</button>
-      </form>
+      <h1>Log In to Existing Account</h1>
+      <AuthenticationForm
+        user={user}
+        buttonLabel="Log In to Existing Account"
+        displayInputs={['email', 'password']}
+        onUserChange={setUserState}
+        onAuthenticationSubmit={handleLogIn}
+      />
     </div>
   );
 };

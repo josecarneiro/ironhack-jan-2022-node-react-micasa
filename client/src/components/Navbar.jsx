@@ -17,15 +17,21 @@ const Navbar = () => {
     <nav>
       <Link to="/">Home</Link>
       <Link to="/profile/search">Search for Profiles</Link>
+      <Link to="/house/search">Search for Houses</Link>
       {(user && (
         <>
-          <span>Welcome {user.name}</span>
-          <button onClick={handleSignOut}>Sign Out</button>
+          <Link to="/house/add">List New House</Link>
+          <aside>
+            <Link to={`/profile/${user._id}`}>{user.name}'s Profile</Link>
+            <button onClick={handleSignOut}>Sign Out</button>
+          </aside>
         </>
       )) || (
         <>
-          <Link to="/log-in">Log In</Link>
-          <Link to="/register">Register</Link>
+          <aside>
+            <Link to="/log-in">Log In</Link>
+            <Link to="/register">Register</Link>
+          </aside>
         </>
       )}
     </nav>

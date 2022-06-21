@@ -1,6 +1,13 @@
 nav {
   display: flex;
+  gap: 1rem;
   a {
-    padding: 1em;
+    padding: 1rem 0;
+  }
+  button {
+    border: 0;
+  }
+  aside {
+    margin-left: auto;
   }
 }

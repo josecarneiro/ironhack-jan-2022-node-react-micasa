@@ -1,20 +1,22 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import ProfileCard from '../components/ProfileCard';
 import { profileSearch } from '../services/profile';
+import './ProfileSearchPage.scss';
 
 const ProfileSearchPage = () => {
   const [term, setTerm] = useState('');
-
   const [profiles, setProfiles] = useState([]);
 
-  useEffect(() => {
-    profileSearch().then((data) => {
+  const handleSearch = (event) => {
+    event.preventDefault();
+    profileSearch(term).then((data) => {
       setProfiles(data.profiles);
     });
-  }, [term]);
+  };
 
   return (
     <div>
-      <form>
+      <form className="profile-search-form" onSubmit={handleSearch}>
         <label htmlFor="input-search-term">Search by name</label>
         <input
           id="input-search-term"
@@ -23,11 +25,11 @@ const ProfileSearchPage = () => {
           value={term}
           onChange={(event) => setTerm(event.target.value)}
         />
+
+        <button>Search</button>
       </form>
       {profiles.map((profile) => (
-        <div>
-          <span>{profile.name}</span>
-        </div>
+        <ProfileCard key={profile._id} profile={profile} />
       ))}
     </div>
   );

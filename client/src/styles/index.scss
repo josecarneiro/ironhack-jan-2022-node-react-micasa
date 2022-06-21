@@ -10,9 +10,44 @@ html {
 
 body {
   margin: 0;
+  padding: 0 1rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+input[type='text'],
+input[type='number'],
+input[type='email'],
+input[type='password'],
+input[type='date'],
+textarea,
+select,
+button,
+.btn {
+  font: inherit;
+  border: 1px solid #dadada;
+  line-height: inherit;
+  color: inherit;
+  padding: 1rem;
+  background: transparent;
+  margin-bottom: 1rem;
+  border-radius: 0.25rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }

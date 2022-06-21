@@ -10,7 +10,7 @@
 - Profile Search - /profile/search - Search for users.
 - Profile Edit - /profile/edit - Allows authenticated user to edit their profile.
 - Profile - /profile/:id - Visualize users' profile and houses they own that can be rented.
-- Home Search - /house/search - Search for houses on map.
+- House Search - /house/search - Search for houses on map.
 - House Bookmars - /house/bookmarks - Allows user to view bookmarked houses.
 - House Add - /house/add - Allows user to post house that is up for rent.
 - House Detail - /house/:id - Visualize single house details, allows authenticated users to contact owner, allows authenticated users to bookmark house.
@@ -94,7 +94,8 @@
 - GET - '/house/search' - Allows user to search for houses.
 - GET - '/house/:id' - Loads single house.
 - PATCH - '/house/:id' - Allows user to edit house they own.
-- POST - '/house' - Lists a new house.
+- DELETE - '/house/:id' - Allows user to delete house they own.
+- POST - '/house' - Create a new house.
 - GET - '/house/bookmarked' - List all houses an authenticated user has bookmarked.
 - POST - '/house/:id/bookmark' - Set bookmark for this house on this users profile.
 - DELETE - '/house/:id/bookmark' - Unset bookmark for this house on this users profile.
