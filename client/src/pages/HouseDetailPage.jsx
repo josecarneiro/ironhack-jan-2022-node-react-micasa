@@ -25,6 +25,12 @@ const HouseDetailPage = () => {
             <h3>{formatPrice(house.price)}</h3>
           </header>
           <section>
+            <h3>Pictures</h3>
+            {house.pictures.map((picture) => (
+              <img key={picture} src={picture} />
+            ))}
+          </section>
+          <section>
             <p>{house.description}</p>
           </section>
           <aside>

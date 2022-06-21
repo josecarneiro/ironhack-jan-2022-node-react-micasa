@@ -20,6 +20,7 @@ const Navbar = () => {
       <Link to="/house/search">Search for Houses</Link>
       {(user && (
         <>
+          <Link to="/message/list">Messages</Link>
           <Link to="/house/add">List New House</Link>
           <aside>
             <Link to={`/profile/${user._id}`}>{user.name}'s Profile</Link>

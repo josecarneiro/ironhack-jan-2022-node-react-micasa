@@ -1,0 +1,15 @@
+.profile-page {
+  img {
+    width: 12rem;
+    height: 12rem;
+    border-radius: 1rem;
+    object-fit: cover;
+  }
+
+  header {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+}

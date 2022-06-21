@@ -2,11 +2,11 @@ import { Marker } from '@react-google-maps/api';
 import { useNavigate } from 'react-router-dom';
 import GenericMap from './GenericMap';
 
-const HouseMap = ({ houses }) => {
+const HouseMap = ({ houses, onMove }) => {
   const navigate = useNavigate();
 
   return (
-    <GenericMap>
+    <GenericMap onMove={onMove}>
       {houses.map((house) => (
         <Marker
           key={house._id}

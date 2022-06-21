@@ -17,6 +17,7 @@
     "express": "^4.17.3",
     "express-session": "^1.17.2",
     "http-errors": "^2.0.0",
+    "imagekit": "^3.2.5",
     "mongoose": "^6.2.11",
     "morgan": "^1.10.0",
     "serve-favicon": "^2.5.0"

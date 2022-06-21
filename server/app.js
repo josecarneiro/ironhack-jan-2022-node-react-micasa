@@ -55,6 +55,7 @@ app.use('/', baseRouter);
 app.use('/authentication', authenticationRouter);
 app.use('/profile', profileRouter);
 app.use('/house', houseRouter);
+app.use('/message', messageRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

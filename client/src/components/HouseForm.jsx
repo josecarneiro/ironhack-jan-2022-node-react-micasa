@@ -1,4 +1,5 @@
 import HouseInputMap from './HouseInputMap';
+import MultipleImageInput from './MultipleImageInput';
 
 const HouseForm = ({ house, onHouseChange, onHouseSubmit, buttonLabel }) => {
   const handleHouseFormSubmission = (event) => {
@@ -104,6 +105,11 @@ const HouseForm = ({ house, onHouseChange, onHouseSubmit, buttonLabel }) => {
       <HouseInputMap
         position={house.position}
         onPositionChange={(position) => onHouseChange({ ...house, position })}
+      />
+
+      <MultipleImageInput
+        images={house.pictures}
+        onImagesChange={(pictures) => onHouseChange({ ...house, pictures })}
       />
 
       <button>{buttonLabel}</button>

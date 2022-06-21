@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import HouseSearchForm from '../components/HouseSearchForm';
-import HouseCard from '../components/HouseCard';
 import { houseSearch } from '../services/house';
 import './HouseSearch.scss';
 import HouseMap from '../components/HouseMap';
@@ -11,7 +10,9 @@ const HouseSearch = () => {
     type: 'apartment',
     minimumSize: 50,
     maximumPrice: 1000000,
-    minimumBedrooms: 0
+    minimumBedrooms: 0,
+    lat: 38,
+    lng: -9
     // center: 0,
     // distance: 0
   });
@@ -26,6 +27,11 @@ const HouseSearch = () => {
     handleSearch();
   }, []);
 
+  const handleMapMove = (lat, lng) => {
+    setFilters({ ...filters, lat, lng });
+    handleSearch();
+  };
+
   return (
     <div className="house-search-page">
       <aside>
@@ -36,10 +42,7 @@ const HouseSearch = () => {
         />
       </aside>
       <main>
-        {/* {houses.map((house) => (
-          <HouseCard key={house._id} house={house} />
-        ))} */}
-        <HouseMap houses={houses} />
+        <HouseMap houses={houses} onMove={handleMapMove} />
       </main>
     </div>
   );

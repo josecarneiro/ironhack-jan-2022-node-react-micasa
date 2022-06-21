@@ -15,6 +15,8 @@ import HouseAddPage from './pages/HouseAddPage';
 import HouseDetailPage from './pages/HouseDetailPage';
 import HouseEditPage from './pages/HouseEditPage';
 import HouseSearch from './pages/HouseSearch';
+import MessageThreadDetailPage from './pages/MessageThreadDetailPage';
+import MessageThreadListPage from './pages/MessageThreadListPage';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -40,6 +42,8 @@ const App = () => {
           <Route path="/house/search" element={<HouseSearch />} />
           <Route path="/house/:id" element={<HouseDetailPage />} />
           <Route path="/house/:id/edit" element={<HouseEditPage />} />
+          <Route path="/message/list" element={<MessageThreadListPage />} />
+          <Route path="/message/:id" element={<MessageThreadDetailPage />} />
         </Routes>
       </BrowserRouter>
     </AuthenticationContext.Provider>

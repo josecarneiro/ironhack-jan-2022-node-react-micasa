@@ -15,8 +15,8 @@
 - House Add - /house/add - Allows user to post house that is up for rent.
 - House Detail - /house/:id - Visualize single house details, allows authenticated users to contact owner, allows authenticated users to bookmark house.
 - House Edit - /house/:id/edit - Allows user to post house that is up for rent.
-- Message list - /message/list - Lists all message threads of an authenticated user.
-- Message thread - /message/:id - Displays single message thread between authenticated user and another user. Allows authenticated userd to send new message.
+- Message Thread List - /message/list - Lists all message threads of an authenticated user.
+- Message Thread Detail - /message/:id - Displays single message thread between authenticated user and another user. Allows authenticated userd to send new message.
 
 ### Services
 

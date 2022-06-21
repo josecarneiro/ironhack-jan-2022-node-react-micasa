@@ -11,7 +11,8 @@ const HouseAddPage = () => {
     price: 500000,
     bedrooms: 2,
     listed: true,
-    description: ''
+    description: '',
+    pictures: []
   });
 
   const navigate = useNavigate();

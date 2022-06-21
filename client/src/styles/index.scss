@@ -38,6 +38,10 @@ button,
   border-radius: 0.25rem;
 }
 
+.btn {
+  display: inline-flex;
+}
+
 button {
   cursor: pointer;
 }
@@ -50,4 +54,8 @@ form {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+img {
+  max-width: 100%;
 }

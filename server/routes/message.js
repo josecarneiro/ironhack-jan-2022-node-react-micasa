@@ -2,12 +2,13 @@
 
 const express = require('express');
 const Message = require('../models/message');
+const User = require('../models/user');
 const routeGuard = require('./../middleware/route-guard');
 
 const router = new express.Router();
 
 // - GET - '/message/list' - List all message threads of an authenticated user.
-router.get('/message/list', routeGuard, (req, res, next) => {
+router.get('/list', routeGuard, (req, res, next) => {
   const authenticatedUserId = req.user._id;
   Message.find({
     $or: [{ sender: authenticatedUserId }, { receiver: authenticatedUserId }]
@@ -25,12 +26,12 @@ router.get('/message/list', routeGuard, (req, res, next) => {
           } else {
             return acc;
           }
-        });
+        }, []);
       return User.find({ _id: { $in: messagesOtherUserIds } });
     })
     .then((profiles) => {
       /* Respond with user objects for users with whom we've been messaging */
-      res.json({ profiles });
+      res.json({ threads: profiles });
     })
     .catch((error) => {
       next(error);
@@ -38,7 +39,7 @@ router.get('/message/list', routeGuard, (req, res, next) => {
 });
 
 // - GET - '/message/:id' - List all messages between authenticated user and user of id param.
-router.get('/message/:id', routeGuard, (req, res, next) => {
+router.get('/:id', routeGuard, (req, res, next) => {
   const authenticatedUserId = req.user._id;
   const otherUserId = req.params.id;
   Message.find({
@@ -47,7 +48,7 @@ router.get('/message/:id', routeGuard, (req, res, next) => {
       { sender: otherUserId, receiver: authenticatedUserId }
     ]
   })
-    .sort({ createdAt: -1 })
+    .sort({ createdAt: 1 })
     .then((messages) => {
       res.json({ messages });
     })
@@ -57,7 +58,7 @@ router.get('/message/:id', routeGuard, (req, res, next) => {
 });
 
 // - POST - '/message/:id' - Send message between authenticated user and user of id param.
-router.post('/message/:id', routeGuard, (req, res, next) => {
+router.post('/:id', routeGuard, (req, res, next) => {
   const sender = req.user._id;
   const receiver = req.params.id;
   const { content } = req.body;

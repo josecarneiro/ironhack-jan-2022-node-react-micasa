@@ -15,8 +15,8 @@ router.get('/search', (req, res, next) => {
     minimumSize,
     maximumPrice,
     minimumBedrooms,
-    center,
-    distance
+    lat,
+    lng
   } = req.query;
   House.find({
     purpose,
@@ -25,6 +25,7 @@ router.get('/search', (req, res, next) => {
     bedrooms: { $gte: minimumBedrooms },
     price: { $lte: maximumPrice }
   })
+    .circle('position', { center: [lng, lat], radius: 0.5 })
     .then((houses) => {
       res.json({ houses });
     })
@@ -57,7 +58,8 @@ router.patch('/:id', routeGuard, (req, res, next) => {
     bedrooms,
     listed,
     description,
-    position
+    position,
+    pictures
   } = req.body;
   const owner = req.user._id;
   House.findOneAndUpdate(
@@ -105,7 +107,8 @@ router.post('/', routeGuard, (req, res, next) => {
     bedrooms,
     listed,
     description,
-    position
+    position,
+    pictures
   } = req.body;
   const owner = req.user._id;
   House.create({
@@ -117,7 +120,8 @@ router.post('/', routeGuard, (req, res, next) => {
     listed,
     description,
     owner,
-    position
+    position,
+    pictures
   })
     .then((house) => {
       res.json({ house });

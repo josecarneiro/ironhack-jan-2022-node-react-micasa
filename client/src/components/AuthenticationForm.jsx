@@ -1,3 +1,5 @@
+import ImageInput from './ImageInput';
+
 const AuthenticationForm = (props) => {
   const handleSubmission = (event) => {
     event.preventDefault();
@@ -38,7 +40,7 @@ const AuthenticationForm = (props) => {
 
       {props.displayInputs.includes('picture') && (
         <>
-          <label htmlFor="input-picture">Picture</label>
+          {/* <label htmlFor="input-picture">Picture</label>
           <input
             id="input-picture"
             type="text"
@@ -46,6 +48,12 @@ const AuthenticationForm = (props) => {
             value={props.user.picture}
             onChange={(event) =>
               props.onUserChange({ ...props.user, picture: event.target.value })
+            }
+          /> */}
+          <ImageInput
+            image={props.user.picture}
+            onImageChange={(picture) =>
+              props.onUserChange({ ...props.user, picture })
             }
           />
         </>
