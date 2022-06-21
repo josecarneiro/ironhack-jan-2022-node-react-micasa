@@ -1,0 +1,8 @@
+{
+  "name": "micasa",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "cd server && npm run start",
+    "prepare": "cd server && npm i"
+  }
+}
