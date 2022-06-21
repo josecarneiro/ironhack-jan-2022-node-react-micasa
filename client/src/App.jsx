@@ -35,13 +35,13 @@ const App = () => {
           <Route path="/" element={<StartPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/log-in" element={<LogInPage />} />
-          <Route path="/profile/search" element={<ProfileSearchPage />} />
-          <Route path="/profile/edit" element={<ProfileEditPage />} />
-          <Route path="/profile/:id" element={<ProfilePage />} />
           <Route path="/house/add" element={<HouseAddPage />} />
           <Route path="/house/search" element={<HouseSearch />} />
           <Route path="/house/:id" element={<HouseDetailPage />} />
           <Route path="/house/:id/edit" element={<HouseEditPage />} />
+          <Route path="/profile/search" element={<ProfileSearchPage />} />
+          <Route path="/profile/edit" element={<ProfileEditPage />} />
+          <Route path="/profile/:id" element={<ProfilePage />} />
           <Route path="/message/list" element={<MessageThreadListPage />} />
           <Route path="/message/:id" element={<MessageThreadDetailPage />} />
         </Routes>
