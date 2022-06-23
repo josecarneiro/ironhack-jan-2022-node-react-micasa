@@ -1,32 +1,27 @@
 import ImageInput from './ImageInput';
+import './MultipleImageInput.scss';
 
-const MultipleImageInput = (props) => {
-  const handleImageAddition = () => {
-    props.onImagesChange([...props.images, '']);
-  };
-
-  return (
-    <>
-      {props.images.map((image, index) => {
-        return (
-          <ImageInput
-            key={image}
-            image={image}
-            onImageChange={(url) => {
-              props.onImagesChange(
-                props.images.map((item, existingImagesIndex) =>
-                  existingImagesIndex === index ? url : item
-                )
-              );
-            }}
-          />
-        );
-      })}
-      <button onClick={handleImageAddition} type="button">
-        +
-      </button>
-    </>
-  );
-};
+const MultipleImageInput = (props) => (
+  <>
+    <div className="multiple-image-list">
+      {props.images.map((image, index) => (
+        <div key={image} className="multiple-image-item">
+          <img src={image} alt={`#${index}`} />
+          <button
+            type="button"
+            onClick={() =>
+              props.onImagesChange(props.images.filter((_, i) => i === index))
+            }
+          >
+            X
+          </button>
+        </div>
+      ))}
+    </div>
+    <ImageInput
+      onImageChange={(url) => props.onImagesChange([...props.images, url])}
+    />
+  </>
+);
 
 export default MultipleImageInput;

@@ -1,0 +1,14 @@
+.multiple-image-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.multiple-image-item {
+  display: flex;
+  img {
+    width: 8rem;
+    height: 8rem;
+    object-fit: cover;
+  }
+}
