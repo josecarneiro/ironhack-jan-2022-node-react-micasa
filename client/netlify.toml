@@ -1,0 +1,6 @@
+# This configuration is necessary to ensure
+# any request gets handled by the react application
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
