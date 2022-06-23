@@ -11,35 +11,25 @@ const HouseSearch = () => {
     minimumSize: 50,
     maximumPrice: 1000000,
     minimumBedrooms: 0,
-    lat: 38,
-    lng: -9
-    // center: 0,
-    // distance: 0
+    lat: 38.75,
+    lng: -9.25,
+    distance: 1
   });
 
   const [houses, setHouses] = useState([]);
 
-  const handleSearch = () => {
-    houseSearch(filters).then((data) => setHouses(data.houses));
-  };
-
   useEffect(() => {
-    handleSearch();
-  }, []);
+    houseSearch(filters).then((data) => setHouses(data.houses));
+  }, [filters]);
 
-  const handleMapMove = (lat, lng) => {
-    setFilters({ ...filters, lat, lng });
-    handleSearch();
+  const handleMapMove = (lat, lng, distance) => {
+    setFilters({ ...filters, lat, lng, distance });
   };
 
   return (
     <div className="house-search-page">
       <aside>
-        <HouseSearchForm
-          filters={filters}
-          onFiltersChange={setFilters}
-          onSearchSubmit={handleSearch}
-        />
+        <HouseSearchForm filters={filters} onFiltersChange={setFilters} />
       </aside>
       <main>
         <HouseMap houses={houses} onMove={handleMapMove} />

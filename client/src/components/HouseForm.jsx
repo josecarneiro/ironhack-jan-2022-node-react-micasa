@@ -107,6 +107,7 @@ const HouseForm = ({ house, onHouseChange, onHouseSubmit, buttonLabel }) => {
         onPositionChange={(position) => onHouseChange({ ...house, position })}
       />
 
+      <label>House Pictures</label>
       <MultipleImageInput
         images={house.pictures}
         onImagesChange={(pictures) => onHouseChange({ ...house, pictures })}

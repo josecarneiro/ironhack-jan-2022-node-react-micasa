@@ -4,7 +4,11 @@ import { memo, useState } from 'react';
 // Initialize style, settings and center objects outside of component function
 // as proposed in the package documentation
 const mapContainerStyle = { width: '100%', minHeight: '30rem', height: '100%' };
-const mapSettings = { fullscreenControl: false, streetViewControl: false };
+const mapSettings = {
+  fullscreenControl: false,
+  streetViewControl: false,
+  mapTypeControl: false
+};
 const center = { lat: 38.75, lng: -9.25 };
 
 const UnmemoizedGenericMap = ({ children, ...props }) => {
@@ -20,10 +24,21 @@ const UnmemoizedGenericMap = ({ children, ...props }) => {
     setMap(map);
   };
 
-  const handleDrag = () => {
-    const lat = map.center.lat();
-    const lng = map.center.lng();
-    props.onMove(lat, lng);
+  const handleMove = () => {
+    if (map) {
+      const boundaries = map.getBounds();
+      const center = boundaries.getCenter();
+      const lat = center.lat();
+      const lng = center.lng();
+      const bottomLeftBoundary = boundaries.getSouthWest();
+      const verticalRadius = lat - bottomLeftBoundary.lat();
+      const horizontalRadius = lng - bottomLeftBoundary.lng();
+      // We can calculate the maximum distance in degrees covered
+      // by the map by calculating the distance in degrees
+      // between the center of the map and any corner
+      const radius = Math.sqrt(verticalRadius ** 2 + horizontalRadius ** 2);
+      props.onMove(lat, lng, radius);
+    }
   };
 
   return (
@@ -34,7 +49,7 @@ const UnmemoizedGenericMap = ({ children, ...props }) => {
         mapContainerStyle={mapContainerStyle}
         options={mapSettings}
         onLoad={handleLoad}
-        onDragEnd={handleDrag}
+        onIdle={handleMove}
         {...props}
       >
         {children}

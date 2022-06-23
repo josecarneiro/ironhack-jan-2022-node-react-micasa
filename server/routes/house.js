@@ -16,7 +16,8 @@ router.get('/search', (req, res, next) => {
     maximumPrice,
     minimumBedrooms,
     lat,
-    lng
+    lng,
+    distance // distance around center in degrees, max: 180
   } = req.query;
   House.find({
     purpose,
@@ -25,7 +26,7 @@ router.get('/search', (req, res, next) => {
     bedrooms: { $gte: minimumBedrooms },
     price: { $lte: maximumPrice }
   })
-    .circle('position', { center: [lng, lat], radius: 0.5 })
+    .circle('position', { center: [lng, lat], radius: distance })
     .then((houses) => {
       res.json({ houses });
     })

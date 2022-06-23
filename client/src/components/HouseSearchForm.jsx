@@ -1,11 +1,6 @@
-const HouseSearchForm = ({ filters, onFiltersChange, onSearchSubmit }) => {
-  const handleSearchFormSubmission = (event) => {
-    event.preventDefault();
-    onSearchSubmit();
-  };
-
+const HouseSearchForm = ({ filters, onFiltersChange }) => {
   return (
-    <form onSubmit={handleSearchFormSubmission}>
+    <form>
       <label htmlFor="input-purpose">Purpose of Listing</label>
       <select
         id="input-purpose"
@@ -38,7 +33,10 @@ const HouseSearchForm = ({ filters, onFiltersChange, onSearchSubmit }) => {
         placeholder="Minimum Size in square meters"
         value={filters.minimumSize}
         onChange={(event) =>
-          onFiltersChange({ ...filters, size: event.target.valueAsNumber })
+          onFiltersChange({
+            ...filters,
+            minimumSize: event.target.valueAsNumber
+          })
         }
       />
 
@@ -58,7 +56,10 @@ const HouseSearchForm = ({ filters, onFiltersChange, onSearchSubmit }) => {
         }
         value={filters.maximumPrice}
         onChange={(event) =>
-          onFiltersChange({ ...filters, price: event.target.valueAsNumber })
+          onFiltersChange({
+            ...filters,
+            maximumPrice: event.target.valueAsNumber
+          })
         }
       />
 
@@ -70,11 +71,12 @@ const HouseSearchForm = ({ filters, onFiltersChange, onSearchSubmit }) => {
         placeholder="Minimum Number of Bedrooms"
         value={filters.minimumBedrooms}
         onChange={(event) =>
-          onFiltersChange({ ...filters, bedrooms: event.target.valueAsNumber })
+          onFiltersChange({
+            ...filters,
+            minimumBedrooms: event.target.valueAsNumber
+          })
         }
       />
-
-      <button>Search</button>
     </form>
   );
 };
