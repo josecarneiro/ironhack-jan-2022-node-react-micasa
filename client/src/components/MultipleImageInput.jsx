@@ -10,7 +10,7 @@ const MultipleImageInput = (props) => (
           <button
             type="button"
             onClick={() =>
-              props.onImagesChange(props.images.filter((_, i) => i === index))
+              props.onImagesChange(props.images.filter((_, i) => i !== index))
             }
           >
             X
