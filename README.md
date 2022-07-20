@@ -12,6 +12,9 @@
 - Profile - /profile/:id - Visualize users' profile and houses they own that can be rented.
 - House Search - /house/search - Search for houses on map.
 - House Bookmars - /house/bookmarks - Allows user to view bookmarked houses.
+
+
+
 - House Add - /house/add - Allows user to post house that is up for rent.
 - House Detail - /house/:id - Visualize single house details, allows authenticated users to contact owner, allows authenticated users to bookmark house.
 - House Edit - /house/:id/edit - Allows user to post house that is up for rent.
